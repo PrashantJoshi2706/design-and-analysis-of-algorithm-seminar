@@ -1,0 +1,36 @@
+//Dynamic[top_down] algorithm for the "maximum profit earn by broker in share market"
+
+
+ // Here price is price table of share's showing it's daily price
+ // Here profit[m][n] table all element value initialised with -∞ and when n=0 or m=0 that profit initialised with 0
+ // n is no of day whose price given in price table
+ // k is how many maximum time's share can buy and sell for the maximum profit
+
+   maxprofit(profit,price,n,k)
+
+1.|   if n==0 or k==0
+2.|      return 0;
+
+3.|   if profit[n][k] > -∞
+
+4.|       return profit[n][k]
+
+5.|   mp=mp_untilt(price,n-1,k)
+
+6.|   profit[n][k] = max(maxprofit(price,n-1,k),mp)
+
+7.|  return profit[n][k]
+
+   mp_until(price,n,k)
+
+1.|      mp = -∞
+
+2.|      for j=0 to j<n
+
+3.|          temp = price[n] - price[j] + maxprofit(price,j,k-1)
+
+4.|          if temp > mp
+
+5.|             mp = temp
+
+6.|       return mp
